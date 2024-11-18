@@ -48,6 +48,18 @@ class Grafo:
         self.vertices = []
         self.direcionado = direcionado
 
+    def listVertices(self):
+        for x in self.vertices :
+            print(x)
+    
+    def getVertice(self,nome):
+        
+        for x in self.vertices :
+            if x.nome == nome:
+                return x
+        
+
+
     def addVertice(self, nome):
         vertice = Vertice(nome)
         self.vertices.append(vertice)
@@ -76,27 +88,8 @@ class Grafo:
             v.print()
 
 
+
 # Teste do código
-grafo = Grafo()
-a = grafo.addVertice("a")
-b = grafo.addVertice("b")
-c = grafo.addVertice("c")
-d = grafo.addVertice("d")
-e = grafo.addVertice("e")
-f = grafo.addVertice("f")
-
-grafo.addAresta(a, b, 6)
-grafo.addAresta(a, c, 15)
-grafo.addAresta(a, e, 8)
-grafo.addAresta(b, c, 20)
-grafo.addAresta(b, e, 10)
-grafo.addAresta(b, f, 8)
-grafo.addAresta(c, d, 9)
-grafo.addAresta(e, f, 5)
-grafo.addAresta(d, f, 7)
-
-
-grafo.print()
 
 
 

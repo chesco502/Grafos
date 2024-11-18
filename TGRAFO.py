@@ -1,10 +1,28 @@
 from GRAFO import Vertice
 from GRAFO import Aresta
-from Grafo import Grafo
+from GRAFO import Grafo
+def elementos_iguais(a, b):
+    # Convertendo 'a' e 'b' para conjuntos
+    if isinstance(a, list):
+        conjunto_a = set(a)  # Mantém os elementos da lista
+    else:
+        conjunto_a = set(a)  # Se for string, cada caractere vira um elemento
 
+    if isinstance(b, list):
+        conjunto_b = set(b)  # Mantém os elementos da lista
+    else:
+        conjunto_b = set(b)  # Se for string, cada caractere vira um elemento
+    
+    # Retornando a interseção dos dois conjuntos
+    return list(conjunto_a.intersection(conjunto_b))
 
 class TagsNaoExistentes(Exception):
     pass
+
+
+class VerticesNaoExistentes(Exception):
+    pass
+
 
 
 
@@ -48,7 +66,7 @@ class TGrafo(Grafo) :
         
 
 
-class TaggedAresta:
+class TaggedAresta(Aresta):
     def __init__(self,tags=None):
        
         super().__init__()
@@ -65,7 +83,7 @@ class TaggedAresta:
         tag1 = v1.tags
         tag2 = v2.tags
         self.peso = peso
-        bothTags = get_common_items(tag1,tag2)
+        bothTags =elementos_iguais(tag1,tag2)
         
        
        
