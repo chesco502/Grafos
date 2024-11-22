@@ -1,4 +1,4 @@
-![image](https://github.com/user-attachments/assets/086b9c9e-2f57-45fb-8d7e-1d027cb64831)# Grafos
+# Grafos
 código desenvolvido na aatéria Teoria de grafos
 
 
