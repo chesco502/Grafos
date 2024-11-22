@@ -85,7 +85,8 @@ Devido ao elevado número de arestas no grafo, decidi criar uma versão simplifi
 
 
 Grafo Simplificado :
-![image](https://github.com/user-attachments/assets/111bfb31-8ede-46c3-88e1-705eba63670b)
+![image](https://github.com/user-attachments/assets/ec1147db-2986-4714-a7a6-87f4e29dcaf3)
+
 
 
     
