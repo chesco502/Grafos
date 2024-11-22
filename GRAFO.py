@@ -38,6 +38,15 @@ class Vertice:
         for aresta in self.arestas:
             aresta.print()
         print("]")
+    
+    def remover(self):
+        for aresta in self.aresta:
+            vertice = aresta.vertice2
+            for arestas_ligadas in vertice.arestas:
+                if(arestas_ligadas.vertice2 ==self):
+                    vertice.arestas.remove(arestas_ligadas)
+
+
 
 
 class Grafo:
@@ -55,10 +64,38 @@ class Grafo:
     def getVertice(self,nome):
         
         for x in self.vertices :
+            aux=str(x.nome)
+            if aux ==str(nome):
+                return x
             if x.nome == nome:
                 return x
         
+    def remover_vertice(self, nome_vertice):
+        
+       
+        for vertice in self.vertices:
+            if vertice == nome_vertice:
+                vertice_remover = vertice
+                
+                break
+        try:
+            self.vertices.remove(vertice_remover)
+            self.verticesNum -= 1
+            vertice_remover.remover()
+        except Exception:
+            pass
 
+    def remove_aresta(self,V1,V2):
+        for x in  V1.arestas:
+            if(x.vertice2 ==V2):
+                aux = V1
+                V1.arestas.remove(x)
+                self.arestasNum -= 1
+        
+        for x in  V2.arestas:
+            if(x.vertice1 ==V1):
+                V2.arestas.remove(x)
+                
 
     def addVertice(self, nome):
         vertice = Vertice(nome)
@@ -77,8 +114,8 @@ class Grafo:
                 v2.addAresta(aresta)
             self.arestasNum += 1
             return aresta
-        else:
-            raise ValueError("Um ou ambos os vértices não existem no grafo.")
+        
+       
 
     def print(self):
         print(f"grafo: {self.nome}")
@@ -86,6 +123,7 @@ class Grafo:
         print(f"numero de Arestas: {self.arestasNum}")
         for v in self.vertices:
             v.print()
+            print("\n")
 
 
 

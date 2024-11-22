@@ -47,6 +47,26 @@ class TGrafo(Grafo) :
         self.verticesNum += 1  
         return vertice
     
+    def addVertice(self, nome,clip = "test",tag = None):
+        vertice = TaggedVertice(nome,clip,tag)
+        self.vertices.append(vertice)
+        self.verticesNum += 1  
+        return vertice
+    
+    def addAresta(self, v1:Vertice ,v2 :Vertice , peso=1):
+        aresta = TaggedAresta()
+        
+        if(v1 in self.vertices and v2 in self.vertices):
+            aresta.conectar(v1, v2,peso)  
+            aresta.peso = peso 
+            aresta.direcionado = self.direcionado  
+            v1.addAresta(aresta)  
+            if not self.direcionado:
+                v2.addAresta(aresta)
+            self.arestasNum += 1  
+            return aresta
+        else:
+            raise VerticesNaoExistentes("Error message")
    
     
     def addTAresta(self, v1:Vertice ,v2 :Vertice , peso=1):
@@ -63,6 +83,26 @@ class TGrafo(Grafo) :
             return aresta
         else:
             raise VerticesNaoExistentes("Error message")
+    
+    def conectar_all_tags(self):
+        for v1 in  self.vertices :
+            for v2 in  self.vertices :
+                aresta = TaggedAresta()
+                if(v1 == v2):
+                    continue
+
+                
+                if(v1 in self.vertices and v2 in self.vertices):
+                    if aresta.conectar(v1, v2):
+                        aresta.peso = 1
+                        aresta.direcionado = self.direcionado  
+                        v1.addAresta(aresta)  
+                        
+                        self.arestasNum += 1  
+    
+
+
+            
         
 
 
@@ -72,11 +112,19 @@ class TaggedAresta(Aresta):
         super().__init__()
         self.tags = tags 
 
+    
     def addTag(self,tag):
         try:
             self.tags.append(tag)
         except Exception:
             self.tags=tag 
+    
+    def print(self):
+        if self.direcionado:
+            print(f"[ {self.vertice1}({elementos_iguais(self.vertice1.tags,self.vertice2.tags)}) ---> ({elementos_iguais(self.vertice1.tags,self.vertice2.tags)}){self.vertice2} , Peso: {self.peso} ]", end=" , ")
+        else:
+            print(f"[ {self.vertice1}({elementos_iguais(self.vertice1.tags,self.vertice2.tags)}) ---- ({elementos_iguais(self.vertice1.tags,self.vertice2.tags)}){self.vertice2} , Peso: {self.peso} ]", end=" , ")
+
 
 
     def conectar(self,v1 : TaggedVertice ,v2 : TaggedVertice,peso = 1):
@@ -91,6 +139,13 @@ class TaggedAresta(Aresta):
             self.tags = bothTags
             self.vertice1 = v1 
             self.vertice2 = v2 
-        else: 
-            raise TagsNaoExistentes
+            return True
+        else:
+            return False
+           
+    
+  
+
+        
+
     
