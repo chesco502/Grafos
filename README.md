@@ -251,6 +251,7 @@ Nosso grafo pode ser representado em 32 cores
 
 
 Caminho euleriano: 
+
 ![image](https://github.com/user-attachments/assets/a52ddabc-19d8-4582-83d5-33e0c8cff46a)
 
  
@@ -264,7 +265,9 @@ O grafo não tem nenhum caminho que passe pelas 1674 arestas sem repetir nenhuma
 
 
 Emparelhamento:
-  ![image](https://github.com/user-attachments/assets/15578fce-827f-4aac-ac6f-6cd6708a1297)
+
+ ![image](https://github.com/user-attachments/assets/c36421f8-ba2e-4ffc-a778-dab5bd1e73c6)
+
 
 
 Existe um emparelhamento perfeito no Grafo!! 
